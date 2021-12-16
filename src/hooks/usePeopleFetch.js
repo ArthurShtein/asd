@@ -10,13 +10,17 @@ export const usePeopleFetch = () => {
   }, []);
 
   async function fetchUsers(countrys) {
+    let strCountrys = "";
+    if (countrys) {
+      strCountrys = countrys.join();
+    }
     setIsLoading(true);
     const response = await axios.get(
-      `https://randomuser.me/api/?nat=${countrys}&results=25&page=1`
+      `https://randomuser.me/api/?nat=${strCountrys}&results=25&page=1`
     );
+
     setIsLoading(false);
     setUsers(response.data.results);
-    console.log('users >>> ',users  )
   }
 
   return { users, isLoading, fetchUsers };

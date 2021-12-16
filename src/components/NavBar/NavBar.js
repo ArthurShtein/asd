@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { AppBar, Tabs, Tab } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [value, setValue] = useState(0);
@@ -19,8 +18,8 @@ const NavBar = () => {
         indicatorColor="primary"
         textColor="primary"
       >
-        <Tab label="Home" index={0} />
-        <Tab label="Favorites" index={1} />
+        <Tab label="Home" index={0} component={Link} to={"/"} />
+        <Tab label="Favorites" index={1} component={Link} to={"/favorites"} />
       </Tabs>
     </AppBar>
   );
